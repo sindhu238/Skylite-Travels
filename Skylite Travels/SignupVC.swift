@@ -13,7 +13,6 @@ import Firebase
 
 class SignupVC: UIViewController, UITextFieldDelegate {
     
-    
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var phoneNo: UITextField!
     @IBOutlet weak var conPassword: UITextField!
@@ -27,14 +26,12 @@ class SignupVC: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.firstName.delegate = self
         self.lastname.delegate = self
         self.email.delegate = self
         self.password.delegate = self
         self.conPassword.delegate = self
         self.phoneNo.delegate = self
-        
         self.databaseRef = FIRDatabase.database().reference()
     }
     
@@ -43,8 +40,6 @@ class SignupVC: UIViewController, UITextFieldDelegate {
         print("text field \(selectedTF.frame.origin.y)")
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(keyboardIsShown), name: Notification.Name.UIKeyboardDidShow, object: nil)
-        
-
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

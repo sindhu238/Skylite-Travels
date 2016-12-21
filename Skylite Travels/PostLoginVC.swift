@@ -17,18 +17,22 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
     @IBOutlet weak var fromTV: UITextField!
     @IBOutlet weak var toTV: UITextField!
     @IBOutlet weak var mapview: MKMapView!
+    @IBOutlet weak var viewToAnimate: UIView!
     
+    let view1 = UIView(frame: CGRect(x: 20, y: 20, width: 0, height: 0))
     private var locationManager: CLLocationManager!
     let regionRadius: CLLocationDistance = 1000
     var currentLocation : CLLocation!
     var destinationLocation: CLLocation!
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         let menuLeftNC = UISideMenuNavigationController()
         menuLeftNC.leftSide = true
         SideMenuManager.menuLeftNavigationController = menuLeftNC
+        SideMenuManager.menuAnimationFadeStrength = 5
         
       //  SideMenuManager.menuAddPanGestureToPresent(toView: (self.navigationController?.navigationBar)!)
       //  SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
@@ -99,7 +103,6 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
         let renderer = MKPolylineRenderer(overlay: overlay)
         renderer.strokeColor = UIColor.blue
         renderer.lineWidth = 4.0
-        
         return renderer
     }
 
@@ -110,8 +113,21 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
     
     @IBAction func onMenuPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "menu", sender: nil)
-       // present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)
-        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.view.addSubview(view1)
+        view1.addSubview(viewToAnimate)
+        self.view1.bounds.origin.y -= self.view.bounds.height
+        self.view.layoutIfNeeded()
+    
+        
+    }
+    @IBAction func onGetQuotePressed(_ sender: UIButton) {
+        UIView.animate(withDuration: 1.3, delay: 0.0, options: .curveEaseIn, animations: {
+            self.view1.bounds.origin.y += self.view.bounds.height
+
+        }, completion:nil)
+    }
 }

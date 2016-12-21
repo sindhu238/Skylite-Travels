@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "81ACFEB085E188669D440CC48DAAF2069B999C5F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "81ACFEB085E188669D440CC48DAAF2069B999C5F" : 9223372036854775807,
+    "B4869168466D75F271069029F7D098F3E2E8DD82" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "FEAA0546-A510-4972-9FB7-F51667B85540",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "81ACFEB085E188669D440CC48DAAF2069B999C5F" : "Skylite%20Travels\/",
+    "B4869168466D75F271069029F7D098F3E2E8DD82" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Skylite Travels",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Skylite Travels.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:sindhu238\/Skylite-Travels.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "81ACFEB085E188669D440CC48DAAF2069B999C5F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:sindhu238\/Skylite-Travels.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B4869168466D75F271069029F7D098F3E2E8DD82"
+    }
+  ]
+}

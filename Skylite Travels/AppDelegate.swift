@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let currentUser = FIRAuth.auth()?.currentUser
         if currentUser == nil {
-            self.window?.rootViewController = self.storyboard.instantiateViewController(withIdentifier: "loginid")
+            self.window?.rootViewController = self.storyboard.instantiateViewController(withIdentifier: "mainid")
         } else {
             self.window?.rootViewController = self.storyboard.instantiateViewController(withIdentifier: "postloginid")
             

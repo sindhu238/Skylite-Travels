@@ -7,20 +7,25 @@
 //
 
 import UIKit
+import Firebase
 
 class NavMenu: UIViewController {
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.navigationController?.navigationBar.barTintColor = UIColor.brown
-        let view = UIView(frame:
-            CGRect(x: 12.0, y: 230.0, width: UIScreen.main.bounds.size.width, height: 20.0)
-        )
-        view.backgroundColor = UIColor.orange
         
-        self.view.addSubview(view)
-        UINavigationBar.appearance().barTintColor = UIColor.blue
+    }
+    @IBAction func onBookingPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "bookingSegue", sender: nil)
     }
 
+    @IBAction func onBookingHistoryPressed(_ sender: UIButton) {
+    }
    
+    @IBAction func onContactUsPressed(_ sender: UIButton) {
+    }
+    
 }
