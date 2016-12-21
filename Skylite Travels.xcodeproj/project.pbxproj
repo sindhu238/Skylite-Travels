@@ -1,0 +1,459 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2D4895BCDCDBA7947574223F /* Pods_Skylite_Travels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D241017570A3789D02C5187F /* Pods_Skylite_Travels.framework */; };
+		4109BABF1E02D7BE001AE89F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4109BABE1E02D7BE001AE89F /* Assets.xcassets */; };
+		4109BAC51E02DBB9001AE89F /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4109BAC41E02DBB9001AE89F /* MainVC.swift */; };
+		4109BAC71E02DCB9001AE89F /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4109BAC61E02DCB9001AE89F /* LoginVC.swift */; };
+		4109BAC91E02E9B0001AE89F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4109BAC81E02E9B0001AE89F /* GoogleService-Info.plist */; };
+		4109BACB1E03001A001AE89F /* PostLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4109BACA1E03001A001AE89F /* PostLoginVC.swift */; };
+		4109BACD1E03F86E001AE89F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4109BACC1E03F86E001AE89F /* MapKit.framework */; };
+		41A383301E07EC92005C7A5F /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3832F1E07EC92005C7A5F /* SignupVC.swift */; };
+		41A383321E093DDD005C7A5F /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A383311E093DDD005C7A5F /* Users.swift */; };
+		41A383341E09B862005C7A5F /* NavMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A383331E09B862005C7A5F /* NavMenu.swift */; };
+		41F71C381E018DD9001892A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F71C371E018DD9001892A7 /* AppDelegate.swift */; };
+		41F71C3D1E018DD9001892A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41F71C3B1E018DD9001892A7 /* Main.storyboard */; };
+		41F71C421E018DD9001892A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41F71C401E018DD9001892A7 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2CBFEE81DDE00FA6EF1F6AB5 /* Pods-Skylite Travels.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skylite Travels.release.xcconfig"; path = "Pods/Target Support Files/Pods-Skylite Travels/Pods-Skylite Travels.release.xcconfig"; sourceTree = "<group>"; };
+		4109BABE1E02D7BE001AE89F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4109BAC41E02DBB9001AE89F /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		4109BAC61E02DCB9001AE89F /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		4109BAC81E02E9B0001AE89F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4109BACA1E03001A001AE89F /* PostLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostLoginVC.swift; sourceTree = "<group>"; };
+		4109BACC1E03F86E001AE89F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		4109BACE1E04665D001AE89F /* Skylite Travels.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Skylite Travels.entitlements"; sourceTree = "<group>"; };
+		41A3832F1E07EC92005C7A5F /* SignupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
+		41A383311E093DDD005C7A5F /* Users.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		41A383331E09B862005C7A5F /* NavMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavMenu.swift; sourceTree = "<group>"; };
+		41F71C341E018DD9001892A7 /* Skylite Travels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Skylite Travels.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		41F71C371E018DD9001892A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		41F71C3C1E018DD9001892A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		41F71C411E018DD9001892A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		41F71C431E018DD9001892A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7BEE5CFCF178AF671329BE33 /* Pods-Skylite Travels.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skylite Travels.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Skylite Travels/Pods-Skylite Travels.debug.xcconfig"; sourceTree = "<group>"; };
+		D241017570A3789D02C5187F /* Pods_Skylite_Travels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Skylite_Travels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		41F71C311E018DD9001892A7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4109BACD1E03F86E001AE89F /* MapKit.framework in Frameworks */,
+				2D4895BCDCDBA7947574223F /* Pods_Skylite_Travels.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4109BAC01E02DB79001AE89F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4109BAC41E02DBB9001AE89F /* MainVC.swift */,
+				4109BAC61E02DCB9001AE89F /* LoginVC.swift */,
+				4109BACA1E03001A001AE89F /* PostLoginVC.swift */,
+				41A3832F1E07EC92005C7A5F /* SignupVC.swift */,
+				41A383331E09B862005C7A5F /* NavMenu.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		4109BAC11E02DB80001AE89F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				41F71C3B1E018DD9001892A7 /* Main.storyboard */,
+				41F71C401E018DD9001892A7 /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		4109BAC21E02DB85001AE89F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				41A383311E093DDD005C7A5F /* Users.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		4109BAC31E02DB8B001AE89F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		41F71C2B1E018DD9001892A7 = {
+			isa = PBXGroup;
+			children = (
+				41F71C361E018DD9001892A7 /* Skylite Travels */,
+				41F71C351E018DD9001892A7 /* Products */,
+				6D68272FA3C5D9724A93A68C /* Pods */,
+				D71AB48DBF625F0DCE38484D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		41F71C351E018DD9001892A7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				41F71C341E018DD9001892A7 /* Skylite Travels.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		41F71C361E018DD9001892A7 /* Skylite Travels */ = {
+			isa = PBXGroup;
+			children = (
+				4109BACE1E04665D001AE89F /* Skylite Travels.entitlements */,
+				4109BAC31E02DB8B001AE89F /* Resources */,
+				4109BAC21E02DB85001AE89F /* Model */,
+				4109BAC11E02DB80001AE89F /* View */,
+				4109BAC01E02DB79001AE89F /* Controller */,
+				41F71C371E018DD9001892A7 /* AppDelegate.swift */,
+				4109BABE1E02D7BE001AE89F /* Assets.xcassets */,
+				41F71C431E018DD9001892A7 /* Info.plist */,
+				4109BAC81E02E9B0001AE89F /* GoogleService-Info.plist */,
+			);
+			path = "Skylite Travels";
+			sourceTree = "<group>";
+		};
+		6D68272FA3C5D9724A93A68C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7BEE5CFCF178AF671329BE33 /* Pods-Skylite Travels.debug.xcconfig */,
+				2CBFEE81DDE00FA6EF1F6AB5 /* Pods-Skylite Travels.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D71AB48DBF625F0DCE38484D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4109BACC1E03F86E001AE89F /* MapKit.framework */,
+				D241017570A3789D02C5187F /* Pods_Skylite_Travels.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		41F71C331E018DD9001892A7 /* Skylite Travels */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 41F71C461E018DD9001892A7 /* Build configuration list for PBXNativeTarget "Skylite Travels" */;
+			buildPhases = (
+				E11FAC663A33074BAD30A66D /* [CP] Check Pods Manifest.lock */,
+				41F71C301E018DD9001892A7 /* Sources */,
+				41F71C311E018DD9001892A7 /* Frameworks */,
+				41F71C321E018DD9001892A7 /* Resources */,
+				4D77FCE4B8DBFB56252653F9 /* [CP] Embed Pods Frameworks */,
+				375A3EB1387271A3BA5E2EFF /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Skylite Travels";
+			productName = "Skylite Travels";
+			productReference = 41F71C341E018DD9001892A7 /* Skylite Travels.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		41F71C2C1E018DD9001892A7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0810;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = Sindhu;
+				TargetAttributes = {
+					41F71C331E018DD9001892A7 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = RR2E9335N3;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 41F71C2F1E018DD9001892A7 /* Build configuration list for PBXProject "Skylite Travels" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 41F71C2B1E018DD9001892A7;
+			productRefGroup = 41F71C351E018DD9001892A7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				41F71C331E018DD9001892A7 /* Skylite Travels */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		41F71C321E018DD9001892A7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41F71C421E018DD9001892A7 /* LaunchScreen.storyboard in Resources */,
+				4109BAC91E02E9B0001AE89F /* GoogleService-Info.plist in Resources */,
+				41F71C3D1E018DD9001892A7 /* Main.storyboard in Resources */,
+				4109BABF1E02D7BE001AE89F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		375A3EB1387271A3BA5E2EFF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Skylite Travels/Pods-Skylite Travels-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4D77FCE4B8DBFB56252653F9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Skylite Travels/Pods-Skylite Travels-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E11FAC663A33074BAD30A66D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		41F71C301E018DD9001892A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4109BACB1E03001A001AE89F /* PostLoginVC.swift in Sources */,
+				41A383301E07EC92005C7A5F /* SignupVC.swift in Sources */,
+				41F71C381E018DD9001892A7 /* AppDelegate.swift in Sources */,
+				4109BAC51E02DBB9001AE89F /* MainVC.swift in Sources */,
+				41A383321E093DDD005C7A5F /* Users.swift in Sources */,
+				4109BAC71E02DCB9001AE89F /* LoginVC.swift in Sources */,
+				41A383341E09B862005C7A5F /* NavMenu.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		41F71C3B1E018DD9001892A7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				41F71C3C1E018DD9001892A7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		41F71C401E018DD9001892A7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				41F71C411E018DD9001892A7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		41F71C441E018DD9001892A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		41F71C451E018DD9001892A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		41F71C471E018DD9001892A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BEE5CFCF178AF671329BE33 /* Pods-Skylite Travels.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Skylite Travels/Skylite Travels.entitlements";
+				DEVELOPMENT_TEAM = RR2E9335N3;
+				INFOPLIST_FILE = "Skylite Travels/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sindhu.Skylite-Travels";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		41F71C481E018DD9001892A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2CBFEE81DDE00FA6EF1F6AB5 /* Pods-Skylite Travels.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Skylite Travels/Skylite Travels.entitlements";
+				DEVELOPMENT_TEAM = RR2E9335N3;
+				INFOPLIST_FILE = "Skylite Travels/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sindhu.Skylite-Travels";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		41F71C2F1E018DD9001892A7 /* Build configuration list for PBXProject "Skylite Travels" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				41F71C441E018DD9001892A7 /* Debug */,
+				41F71C451E018DD9001892A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		41F71C461E018DD9001892A7 /* Build configuration list for PBXNativeTarget "Skylite Travels" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				41F71C471E018DD9001892A7 /* Debug */,
+				41F71C481E018DD9001892A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 41F71C2C1E018DD9001892A7 /* Project object */;
+}
