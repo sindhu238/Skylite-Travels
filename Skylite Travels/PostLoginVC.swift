@@ -44,6 +44,7 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
     var sourceAnnotation: MKPointAnnotation!
     var route: MKRoute!
     var changedSourceLoc = false
+    var swapClicked = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -165,6 +166,11 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
         let temp = fromTV.text
         fromTV.text = toTV.text
         toTV.text = temp
+        if fromTV.text != "" && toTV.text != "" {
+            swapClicked = true
+            mapview.remove(route.polyline)
+            drawRoute(source: destLocMapItem, destination: sourceLocMapItem)
+        }
     }
     
     @IBAction func onDownArrowClicked(_ sender: UIButton) {
@@ -223,6 +229,8 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
                 if self.fromTVSelected {
                     self.changeSource(place: self.places[indexPath.row])
                     self.mapview.showAnnotations([self.sourceAnnotation], animated: true)
+                    let region = MKCoordinateRegionMakeWithDistance(self.sourceCoordinates, 1000, 5000.0)
+                    self.mapview.setRegion(region, animated: true)
  
                 }
                 if self.fromTV.text != "" && self.toTV.text != "" {
@@ -263,9 +271,26 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
             self.destinationAnnotation.coordinate = location.coordinate
         }
         
+        drawRoute(source: sourceLocMapItem, destination: destLocMapItem)
+    }
+    
+    func changeSource(place: Places) {
+        self.mapview.removeAnnotation(self.sourceAnnotation)
+        sourceCoordinates = CLLocationCoordinate2DMake(place._latitude, place._longitude)
+        sourcelocPlaceMarker = MKPlacemark(coordinate: sourceCoordinates, addressDictionary: nil)
+        sourceLocMapItem = MKMapItem(placemark: sourcelocPlaceMarker)
+        sourceAnnotation = MKPointAnnotation()
+        sourceAnnotation.title = "From Location"
+        if let location = sourcelocPlaceMarker.location {
+            sourceAnnotation.coordinate = location.coordinate
+        }
+    }
+
+    // Function that draws a polyline between source and destination
+    func drawRoute(source: MKMapItem, destination: MKMapItem) {
         let directionRequest = MKDirectionsRequest()
-        directionRequest.source = sourceLocMapItem
-        directionRequest.destination = destLocMapItem
+        directionRequest.source = source
+        directionRequest.destination = destination
         directionRequest.transportType = .automobile
         
         // Calculate the direction
@@ -280,29 +305,21 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
                 
                 return
             }
+            if self.swapClicked {
+                let temp = self.sourceAnnotation.title
+                self.sourceAnnotation.title = self.destinationAnnotation.title
+                self.destinationAnnotation.title = temp
+                self.mapview.remove(self.route.polyline)
+                self.swapClicked = false
+            }
             self.route = response.routes[0]
             
             self.mapview.add((self.route.polyline), level: MKOverlayLevel.aboveRoads)
             
             let rect = self.route.polyline.boundingMapRect
             self.mapview.setRegion(MKCoordinateRegionForMapRect(rect), animated: true)
-        }
 
-    }
-    
-    func changeSource(place: Places) {
-        sourceCoordinates = CLLocationCoordinate2DMake(place._latitude, place._longitude)
-        sourcelocPlaceMarker = MKPlacemark(coordinate: sourceCoordinates, addressDictionary: nil)
-        sourceLocMapItem = MKMapItem(placemark: sourcelocPlaceMarker)
-        sourceAnnotation = MKPointAnnotation()
-        sourceAnnotation.title = "From Location"
-        if let location = sourcelocPlaceMarker.location {
-            sourceAnnotation.coordinate = location.coordinate
         }
-        let region = MKCoordinateRegionMakeWithDistance(sourceCoordinates, 1000, 5000.0)
-        
-        mapview.setRegion(region, animated: true)
-
     }
     func downloadDataFromFirebase() {
         let ref = FIRDatabase.database().reference()
