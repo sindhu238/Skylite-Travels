@@ -19,7 +19,7 @@ class NavMenu: UIViewController {
         
     }
     @IBAction func onBookingPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "bookingSegue", sender: nil)
+        dismiss(animated: true, completion: nil)
     }
 
     @IBAction func onBookingHistoryPressed(_ sender: UIButton) {
