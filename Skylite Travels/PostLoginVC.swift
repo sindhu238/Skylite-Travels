@@ -29,7 +29,7 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
     var places : [Places] = []
     private var locationManager: CLLocationManager!
     let regionRadius: CLLocationDistance = 1000
-    var currentLocation : CLLocation!
+    var sourceLocation : CLLocation!
     var destinationLocation: CLLocation!
     var fromTVSelected = false
     var toTVSelected = false
@@ -40,6 +40,7 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
     var sourceCoordinates: CLLocationCoordinate2D!
     var sourcelocPlaceMarker: MKPlacemark!
     var sourceLocMapItem: MKMapItem!
+    var geocode: CLGeocoder!
 
     var sourceAnnotation: MKPointAnnotation!
     var route: MKRoute!
@@ -65,12 +66,12 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
         locationManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
-            currentLocation = getCurrentLocation()
+            sourceLocation = getCurrentLocation()
         }
         
        
         
-        sourceCoordinates = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude)
+        sourceCoordinates = CLLocationCoordinate2DMake(sourceLocation.coordinate.latitude, sourceLocation.coordinate.longitude)
        
         
         sourcelocPlaceMarker = MKPlacemark(coordinate: sourceCoordinates, addressDictionary: nil)
@@ -138,14 +139,24 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
         return renderer
     }
 
+    // Gets current location and displays address in from text field
     func getCurrentLocation()-> CLLocation {
         let currentLocation = locationManager.location!
+        geocode = CLGeocoder()
+        geocode.reverseGeocodeLocation(currentLocation, completionHandler: { (placemarks, error) in
+            if let placemark = (placemarks?[0]) {
+                let currentPlaceAddress = "\((placemark.addressDictionary?["Name"])!), \((placemark.addressDictionary?["Thoroughfare"])!), \((placemark.addressDictionary?["ZIP"])!)"
+                self.fromTV.text = currentPlaceAddress
+            }
+        })
+
         return currentLocation
     }
     
     @IBAction func onMenuPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "menu", sender: nil)
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -159,19 +170,13 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
     
     
     @IBAction func onGetQuotePressed(_ sender: UIButton) {
-        
-    }
-    
-    @IBAction func onSwapClicked(_ sender: UIButton) {
-        let temp = fromTV.text
-        fromTV.text = toTV.text
-        toTV.text = temp
         if fromTV.text != "" && toTV.text != "" {
-            swapClicked = true
-            mapview.remove(route.polyline)
-            drawRoute(source: destLocMapItem, destination: sourceLocMapItem)
+            let distance = sourceLocation.distance(from: destinationLocation)
+            print("Distance \(distance*0.000621371)")
         }
     }
+    
+    
     
     @IBAction func onDownArrowClicked(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
@@ -209,7 +214,7 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       let placeName = self.places[indexPath.row]._placeName
+       let placeName = self.places[indexPath.row].placeName
         if fromTVSelected {
             fromTV.text = placeName
             changedSourceLoc = true
@@ -244,8 +249,69 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
         })
     }
     
+    @IBAction func onSwapClicked(_ sender: UIButton) {
+        if fromTV.text != "" && toTV.text != "" {
+            if route != nil {
+                mapview.remove(route.polyline)
+            }
+            mapview.removeAnnotations([sourceAnnotation,destinationAnnotation])
+
+            let tempLocation = sourceLocation
+            sourceLocation = destinationLocation
+            destinationLocation = tempLocation
+            
+            let tempMapItem = sourceLocMapItem
+            sourceLocMapItem = destLocMapItem
+            destLocMapItem = tempMapItem
+            
+//            let tempPM = sourcelocPlaceMarker
+//            sourcelocPlaceMarker = destlocPlaceMarker
+//            destlocPlaceMarker = tempPM
+
+            
+//            if let location = sourcelocPlaceMarker.location {
+//                self.sourceAnnotation.coordinate = location.coordinate
+//                self.sourceAnnotation.title = "From Location"
+//                print("source \(location.coordinate.latitude) \(self.sourceAnnotation.title)")
+//            }
+//            if let location = destlocPlaceMarker.location {
+//                self.destinationAnnotation.coordinate = location.coordinate
+//                self.destinationAnnotation.title = "Destination"
+//                print("des \(location.coordinate.latitude) \(self.destinationAnnotation.coordinate.latitude)")
+//
+//            }
+            let tempAnnotaion = sourceAnnotation
+            sourceAnnotation = destinationAnnotation
+            destinationAnnotation = tempAnnotaion
+            destinationAnnotation.title = "Destination"
+            sourceAnnotation.title = "From Location"
+            print("des \(sourceAnnotation.coordinate.latitude)  \(sourceAnnotation.coordinate.longitude)  \(self.destinationAnnotation.coordinate.latitude)    \(self.destinationAnnotation.coordinate.longitude)")
+
+            swapClicked = true
+            mapview.addAnnotations([sourceAnnotation,destinationAnnotation])
+            drawRoute(source: sourceLocMapItem, destination: destLocMapItem)
+        } else if toTV.text == ""{
+            destinationLocation = sourceLocation
+            destinationAnnotation = sourceAnnotation
+            destinationAnnotation.title = "Destination"
+            destlocPlaceMarker = sourcelocPlaceMarker
+            destLocMapItem = sourceLocMapItem
+        }else if fromTV.text == "" {
+            sourceLocation = destinationLocation
+            sourceAnnotation = destinationAnnotation
+            sourceAnnotation.title = "From Location"
+            sourcelocPlaceMarker = destlocPlaceMarker
+            sourceLocMapItem = destLocMapItem
+        }
+        
+        let temp = fromTV.text
+        fromTV.text = toTV.text
+        toTV.text = temp
+    }
+    
+    //When destination is selected it calucates coordinates for source and destination and displays annotations
     func routeMap(place: Places, text: String) {
-        if destinationLocation != nil {
+        if route != nil {
             mapview.removeAnnotation(sourceAnnotation)
             mapview.removeAnnotation(destinationAnnotation)
             mapview.remove(route.polyline)
@@ -256,27 +322,31 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
         }
         
         else {
-            destinationLocation = CLLocation(latitude: CLLocationDegrees(place._latitude), longitude: CLLocationDegrees(place.longitude))
+            destinationLocation = CLLocation(latitude: CLLocationDegrees(place.latitude), longitude: CLLocationDegrees(place.longitude))
             destinationCoordinates = CLLocationCoordinate2DMake(destinationLocation.coordinate.latitude, destinationLocation.coordinate.longitude)
             destlocPlaceMarker = MKPlacemark(coordinate: destinationCoordinates, addressDictionary: nil)
             destLocMapItem = MKMapItem(placemark: destlocPlaceMarker)
             destinationAnnotation = MKPointAnnotation()
             
             self.destinationAnnotation.title = "Destination"
-
+            if let location = destlocPlaceMarker.location {
+                self.destinationAnnotation.coordinate = location.coordinate
+            }
+            
         }
+        
         self.mapview.showAnnotations([sourceAnnotation, destinationAnnotation], animated: true )
 
-        if let location = destlocPlaceMarker.location {
-            self.destinationAnnotation.coordinate = location.coordinate
-        }
+        
         
         drawRoute(source: sourceLocMapItem, destination: destLocMapItem)
     }
     
+    //When source location is changed from given current location then it calculates the coordinates for source
     func changeSource(place: Places) {
         self.mapview.removeAnnotation(self.sourceAnnotation)
-        sourceCoordinates = CLLocationCoordinate2DMake(place._latitude, place._longitude)
+        self.sourceLocation = CLLocation(latitude: CLLocationDegrees(place.latitude), longitude: CLLocationDegrees(place.longitude))
+        sourceCoordinates = CLLocationCoordinate2DMake(place.latitude, place.longitude)
         sourcelocPlaceMarker = MKPlacemark(coordinate: sourceCoordinates, addressDictionary: nil)
         sourceLocMapItem = MKMapItem(placemark: sourcelocPlaceMarker)
         sourceAnnotation = MKPointAnnotation()
@@ -304,13 +374,6 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
                 }
                 
                 return
-            }
-            if self.swapClicked {
-                let temp = self.sourceAnnotation.title
-                self.sourceAnnotation.title = self.destinationAnnotation.title
-                self.destinationAnnotation.title = temp
-                self.mapview.remove(self.route.polyline)
-                self.swapClicked = false
             }
             self.route = response.routes[0]
             

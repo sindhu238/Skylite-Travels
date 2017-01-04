@@ -10,12 +10,12 @@ import Foundation
 import UIKit
 
 class Places {
-    var _placeName: String
-    var _address: String
-    var _latitude: Double
-    var _longitude: Double
-    var _category: String
-    var _zipcode: String
+    private var _placeName: String
+    private var _address: String
+    private var _latitude: Double
+    private var _longitude: Double
+    private var _category: String
+    private var _zipcode: String
     
     var placeName: String {
         return _placeName
