@@ -9,6 +9,7 @@ target 'Skylite Travels' do
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
+pod 'Alamofire', '~> 4.0'
 pod 'EasyToast'
 pod 'SideMenu'
 end
