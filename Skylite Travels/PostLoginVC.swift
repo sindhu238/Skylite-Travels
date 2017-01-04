@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 import Firebase
 import SideMenu
-import Alamofire
+
 
 class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
