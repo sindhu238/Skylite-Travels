@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D4895BCDCDBA7947574223F /* Pods_Skylite_Travels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D241017570A3789D02C5187F /* Pods_Skylite_Travels.framework */; };
+		3421E90AB2EC241DC8969A76 /* Pods_Skylite_Travels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC7A9759E6F3FA42D9E0AFE3 /* Pods_Skylite_Travels.framework */; };
 		4109BABF1E02D7BE001AE89F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4109BABE1E02D7BE001AE89F /* Assets.xcassets */; };
 		4109BAC51E02DBB9001AE89F /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4109BAC41E02DBB9001AE89F /* MainVC.swift */; };
 		4109BAC71E02DCB9001AE89F /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4109BAC61E02DCB9001AE89F /* LoginVC.swift */; };
@@ -26,7 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2CBFEE81DDE00FA6EF1F6AB5 /* Pods-Skylite Travels.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skylite Travels.release.xcconfig"; path = "Pods/Target Support Files/Pods-Skylite Travels/Pods-Skylite Travels.release.xcconfig"; sourceTree = "<group>"; };
+		109982658F81F7F57B792BF1 /* Pods-Skylite Travels.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skylite Travels.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Skylite Travels/Pods-Skylite Travels.debug.xcconfig"; sourceTree = "<group>"; };
 		4109BABE1E02D7BE001AE89F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4109BAC41E02DBB9001AE89F /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		4109BAC61E02DCB9001AE89F /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -45,8 +45,8 @@
 		41F71C3C1E018DD9001892A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		41F71C411E018DD9001892A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		41F71C431E018DD9001892A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7BEE5CFCF178AF671329BE33 /* Pods-Skylite Travels.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skylite Travels.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Skylite Travels/Pods-Skylite Travels.debug.xcconfig"; sourceTree = "<group>"; };
-		D241017570A3789D02C5187F /* Pods_Skylite_Travels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Skylite_Travels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C4A38CA21DC96F5DF53F295 /* Pods-Skylite Travels.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skylite Travels.release.xcconfig"; path = "Pods/Target Support Files/Pods-Skylite Travels/Pods-Skylite Travels.release.xcconfig"; sourceTree = "<group>"; };
+		DC7A9759E6F3FA42D9E0AFE3 /* Pods_Skylite_Travels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Skylite_Travels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +55,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4109BACD1E03F86E001AE89F /* MapKit.framework in Frameworks */,
-				2D4895BCDCDBA7947574223F /* Pods_Skylite_Travels.framework in Frameworks */,
+				3421E90AB2EC241DC8969A76 /* Pods_Skylite_Travels.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,8 +106,8 @@
 			children = (
 				41F71C361E018DD9001892A7 /* Skylite Travels */,
 				41F71C351E018DD9001892A7 /* Products */,
-				6D68272FA3C5D9724A93A68C /* Pods */,
 				D71AB48DBF625F0DCE38484D /* Frameworks */,
+				A96DDF2B770D1298DF51B4DA /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,11 +135,11 @@
 			path = "Skylite Travels";
 			sourceTree = "<group>";
 		};
-		6D68272FA3C5D9724A93A68C /* Pods */ = {
+		A96DDF2B770D1298DF51B4DA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7BEE5CFCF178AF671329BE33 /* Pods-Skylite Travels.debug.xcconfig */,
-				2CBFEE81DDE00FA6EF1F6AB5 /* Pods-Skylite Travels.release.xcconfig */,
+				109982658F81F7F57B792BF1 /* Pods-Skylite Travels.debug.xcconfig */,
+				9C4A38CA21DC96F5DF53F295 /* Pods-Skylite Travels.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -148,7 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				4109BACC1E03F86E001AE89F /* MapKit.framework */,
-				D241017570A3789D02C5187F /* Pods_Skylite_Travels.framework */,
+				DC7A9759E6F3FA42D9E0AFE3 /* Pods_Skylite_Travels.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -160,12 +160,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 41F71C461E018DD9001892A7 /* Build configuration list for PBXNativeTarget "Skylite Travels" */;
 			buildPhases = (
-				E11FAC663A33074BAD30A66D /* [CP] Check Pods Manifest.lock */,
+				C79D6C5DBE2AAB37A5B3CCF5 /* [CP] Check Pods Manifest.lock */,
 				41F71C301E018DD9001892A7 /* Sources */,
 				41F71C311E018DD9001892A7 /* Frameworks */,
 				41F71C321E018DD9001892A7 /* Resources */,
-				4D77FCE4B8DBFB56252653F9 /* [CP] Embed Pods Frameworks */,
-				375A3EB1387271A3BA5E2EFF /* [CP] Copy Pods Resources */,
+				FD9535160B73A5042D3F836D /* [CP] Embed Pods Frameworks */,
+				48BA5579E63C2652170FF2DE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -234,7 +234,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		375A3EB1387271A3BA5E2EFF /* [CP] Copy Pods Resources */ = {
+		48BA5579E63C2652170FF2DE /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -249,22 +249,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Skylite Travels/Pods-Skylite Travels-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4D77FCE4B8DBFB56252653F9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Skylite Travels/Pods-Skylite Travels-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E11FAC663A33074BAD30A66D /* [CP] Check Pods Manifest.lock */ = {
+		C79D6C5DBE2AAB37A5B3CCF5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -277,6 +262,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FD9535160B73A5042D3F836D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Skylite Travels/Pods-Skylite Travels-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -416,7 +416,7 @@
 		};
 		41F71C471E018DD9001892A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7BEE5CFCF178AF671329BE33 /* Pods-Skylite Travels.debug.xcconfig */;
+			baseConfigurationReference = 109982658F81F7F57B792BF1 /* Pods-Skylite Travels.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Skylite Travels/Skylite Travels.entitlements";
@@ -431,7 +431,7 @@
 		};
 		41F71C481E018DD9001892A7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2CBFEE81DDE00FA6EF1F6AB5 /* Pods-Skylite Travels.release.xcconfig */;
+			baseConfigurationReference = 9C4A38CA21DC96F5DF53F295 /* Pods-Skylite Travels.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Skylite Travels/Skylite Travels.entitlements";
