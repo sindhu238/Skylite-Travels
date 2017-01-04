@@ -14,8 +14,8 @@ class PlacesTVCell: UITableViewCell {
     @IBOutlet weak var placeAddress: UILabel!
    
     func configure(places: Places) {
-        placeName.text = places._placeName
-        placeAddress.text = places._address
+        placeName.text = places.placeName
+        placeAddress.text = places.address
     }
 
 }

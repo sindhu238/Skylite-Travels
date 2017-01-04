@@ -65,6 +65,10 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: a1f8ed39e4fe21c68957daed472c7afbcdf29166
   SideMenu: 988de59b1f14bb73b5e2e5664b1da7674d24c654
 
+<<<<<<< HEAD
 PODFILE CHECKSUM: b41970b947df9df747ddce27d0ffffc7e213e3c2
+=======
+PODFILE CHECKSUM: 4f61d93d8d1ffdc09d9c4f715c2bfb1b8f293134
+>>>>>>> ff9c59c
 
 COCOAPODS: 1.1.1

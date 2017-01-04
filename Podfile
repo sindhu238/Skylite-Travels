@@ -1,5 +1,6 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '9.0'
+source 'https://github.com/Cocoapods/Specs.git'
+platform :ios, '10.0'
 
 target 'Skylite Travels' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
@@ -9,7 +10,12 @@ target 'Skylite Travels' do
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
+<<<<<<< HEAD
 pod 'Alamofire', '~> 4.0'
 pod 'EasyToast'
+=======
+pod 'EasyToast' 
+pod 'Alamofire', '~> 4.0'
+>>>>>>> ff9c59c
 pod 'SideMenu'
 end
