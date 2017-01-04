@@ -11,6 +11,7 @@ import MapKit
 import CoreLocation
 import Firebase
 import SideMenu
+import Alamofire
 
 class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
@@ -84,8 +85,6 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
         if let location = sourcelocPlaceMarker.location {
             sourceAnnotation.coordinate = location.coordinate
         }
-        
-        
         self.mapview.showAnnotations([sourceAnnotation], animated: true )
         
         toTV.addTarget(self, action: #selector(textFieldEditing), for: UIControlEvents.touchDown)
