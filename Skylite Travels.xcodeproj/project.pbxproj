@@ -21,6 +21,7 @@
 		41C8B5C51E0C2C6B00AD589A /* PlacesTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C8B5C41E0C2C6B00AD589A /* PlacesTVCell.swift */; };
 		41C8B5C71E0C396500AD589A /* LeftPaddedTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C8B5C61E0C396500AD589A /* LeftPaddedTF.swift */; };
 		41C8B5C91E0C511000AD589A /* Places.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C8B5C81E0C511000AD589A /* Places.swift */; };
+		41D59B0F1E1F8BD900058E2E /* QuoteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D59B0E1E1F8BD900058E2E /* QuoteVC.swift */; };
 		41F71C381E018DD9001892A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F71C371E018DD9001892A7 /* AppDelegate.swift */; };
 		41F71C3D1E018DD9001892A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41F71C3B1E018DD9001892A7 /* Main.storyboard */; };
 		41F71C421E018DD9001892A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41F71C401E018DD9001892A7 /* LaunchScreen.storyboard */; };
@@ -42,6 +43,7 @@
 		41C8B5C41E0C2C6B00AD589A /* PlacesTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesTVCell.swift; sourceTree = "<group>"; };
 		41C8B5C61E0C396500AD589A /* LeftPaddedTF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftPaddedTF.swift; sourceTree = "<group>"; };
 		41C8B5C81E0C511000AD589A /* Places.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Places.swift; sourceTree = "<group>"; };
+		41D59B0E1E1F8BD900058E2E /* QuoteVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteVC.swift; sourceTree = "<group>"; };
 		41F71C341E018DD9001892A7 /* Skylite Travels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Skylite Travels.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		41F71C371E018DD9001892A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41F71C3C1E018DD9001892A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				4109BACA1E03001A001AE89F /* PostLoginVC.swift */,
 				41A3832F1E07EC92005C7A5F /* SignupVC.swift */,
 				41A383331E09B862005C7A5F /* NavMenu.swift */,
+				41D59B0E1E1F8BD900058E2E /* QuoteVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				4109BACB1E03001A001AE89F /* PostLoginVC.swift in Sources */,
 				419C6B191E1E3B0E005DD6E7 /* Constants.swift in Sources */,
 				41A383301E07EC92005C7A5F /* SignupVC.swift in Sources */,
+				41D59B0F1E1F8BD900058E2E /* QuoteVC.swift in Sources */,
 				41F71C381E018DD9001892A7 /* AppDelegate.swift in Sources */,
 				4109BAC51E02DBB9001AE89F /* MainVC.swift in Sources */,
 				41A383321E093DDD005C7A5F /* Users.swift in Sources */,

@@ -26,9 +26,6 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
     @IBOutlet weak var passengerValue: UILabel!
     @IBOutlet weak var luggageValue: UILabel!
     
-    //View behind viewToAnimate
-    var view1 : UIView!
-    
     var places : [Places] = []
     private var locationManager: CLLocationManager!
     let regionRadius: CLLocationDistance = 1000
@@ -61,11 +58,11 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
     @IBOutlet weak var passengerSlider: UISlider!
     @IBOutlet weak var datepicker: UIDatePicker!
     @IBOutlet weak var passlugView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.downloadDataFromFirebase()
-        view1 = UIView(frame: CGRect(x: 10, y: (self.view.bounds.height - self.viewToAnimate.bounds.height), width: self.viewToAnimate.bounds.width , height: self.viewToAnimate.bounds.height))
-        
+    
         self.toTV.isUserInteractionEnabled = true
         self.fromTV.isUserInteractionEnabled = true
         let menuLeftNC = UISideMenuNavigationController()
@@ -102,9 +99,6 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
         
         toTV.addTarget(self, action: #selector(textFieldEditing), for: UIControlEvents.touchDown)
         fromTV.addTarget(self, action: #selector(textFieldEditing), for: UIControlEvents.touchDown)
-        
-//        self.tableView.estimatedRowHeight = 100.0
-//        self.tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     func textFieldEditing(textfield: UITextField) {
@@ -125,8 +119,8 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
         
         UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseIn, animations: {
             self.viewToAnimate.isUserInteractionEnabled = true
-            self.view1.isUserInteractionEnabled = true
             self.mapview.isUserInteractionEnabled = false
+            self.viewToAnimate.alpha = 1
             self.viewToAnimate.bounds.origin.y += self.view.bounds.height
             self.tableView.reloadData()
             
@@ -137,11 +131,6 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
                 self.fromTV.isUserInteractionEnabled = false
             }
         })
-    }
-    
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 73
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -172,14 +161,24 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.view.addSubview(view1)
-        self.view1.isUserInteractionEnabled = false
-        view1.addSubview(viewToAnimate)
-        self.viewToAnimate.bounds.origin.y -= self.view.bounds.height
-        self.view.layoutIfNeeded()
-        self.getQuoteBtn.alpha = 0
+        
+        if self.viewToAnimate.bounds.origin.y == 0 {
+            self.viewToAnimate.alpha = 0
+            self.viewToAnimate.bounds.origin.y -= self.view.bounds.height
+        } else {
+            self.mapview.isUserInteractionEnabled = true
+            self.getQuoteBtn.isUserInteractionEnabled = true
+            self.toTV.isUserInteractionEnabled = true
+            self.fromTV.isUserInteractionEnabled = true
+        }
         self.passlugView.bounds.origin.y -= self.view.bounds.height
         self.passlugView.alpha = 0
+
+        if fromTV.text != "" && toTV.text != "" {
+            self.getQuoteBtn.alpha = 1
+        }else {
+            self.getQuoteBtn.alpha = 0
+        }
     }
     
     
@@ -188,7 +187,7 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
             self.downloadPrice {
                 self.downloadVat {
                     self.calculateDistance {
-                        UIView.animate(withDuration: 0.4, delay: 0.0, options: .beginFromCurrentState, animations: {
+                        UIView.animate(withDuration: 0.3, delay: 0.0, options: .beginFromCurrentState, animations: {
                            self.passlugView.alpha = 1
                             self.passlugView.bounds.origin.y += self.view.bounds.height
 
@@ -203,7 +202,6 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
         let dbReference = FIRDatabase.database().reference()
         dbReference.child("Price").observeSingleEvent(of: .value, with: { (snapshot) in
             self.price = snapshot.value! as! Double
-            print("price \(self.price)")
             completed()
         })
         { (error) in
@@ -216,7 +214,6 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
         dbReference.child("VAT").observeSingleEvent(of: .value, with: { (snapshot) in
             let temp = snapshot.value! as! String
             self.vat = Double(temp)
-            print("vat \(self.vat)")
             completed()
         })
         { (error) in
@@ -238,7 +235,6 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
                 let lastindex = text.index(text.endIndex, offsetBy: -3)
                 let dist: String = text.substring(to: lastindex)
                 self.amount = Int(round((round(Double(dist)!) * self.price) + (round(Double(dist)!) * self.price * self.vat/100)))
-                print("amout \(self.amount)")
                 
             case .failure(let error):
                 print("Error in getting distance from google maps \(error.localizedDescription)")
@@ -250,17 +246,21 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
 
     @IBAction func onDownArrowClicked(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
+            self.viewToAnimate.alpha = 0
             self.viewToAnimate.bounds.origin.y -= self.view.bounds.height
            
         }, completion:{finished in
             if finished {
-                self.view1.isUserInteractionEnabled = false
                 self.mapview.isUserInteractionEnabled = true
                 self.getQuoteBtn.isUserInteractionEnabled = true
                 self.toTV.isUserInteractionEnabled = true
                 self.fromTV.isUserInteractionEnabled = true
             }
         })
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 73
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -282,7 +282,6 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
         }
     }
     
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        let placeName = self.places[indexPath.row].placeName
         if fromTVSelected {
@@ -292,22 +291,25 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
             toTV.text = placeName
         }
         UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
+            self.viewToAnimate.alpha = 0
             self.viewToAnimate.bounds.origin.y -= self.view.bounds.height
+            print(" 1 \(self.viewToAnimate.bounds.origin.y)")
+
             
         }, completion:{finished in
             if finished {
-                self.view1.isUserInteractionEnabled = false
                 self.mapview.isUserInteractionEnabled = true
                 self.getQuoteBtn.isUserInteractionEnabled = true
                 self.toTV.isUserInteractionEnabled = true
                 self.fromTV.isUserInteractionEnabled = true
+                
                 if self.fromTVSelected {
                     self.changeSource(place: self.places[indexPath.row])
                     self.mapview.showAnnotations([self.sourceAnnotation], animated: true)
                     let region = MKCoordinateRegionMakeWithDistance(self.sourceCoordinates, 1000, 5000.0)
                     self.mapview.setRegion(region, animated: true)
- 
                 }
+                
                 if self.fromTV.text != "" && self.toTV.text != "" {
                     if self.fromTVSelected {
                         self.routeMap(place: self.places[indexPath.row], text: "from")
@@ -336,23 +338,7 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
             let tempMapItem = sourceLocMapItem
             sourceLocMapItem = destLocMapItem
             destLocMapItem = tempMapItem
-            
-//            let tempPM = sourcelocPlaceMarker
-//            sourcelocPlaceMarker = destlocPlaceMarker
-//            destlocPlaceMarker = tempPM
 
-            
-//            if let location = sourcelocPlaceMarker.location {
-//                self.sourceAnnotation.coordinate = location.coordinate
-//                self.sourceAnnotation.title = "From Location"
-//                print("source \(location.coordinate.latitude) \(self.sourceAnnotation.title)")
-//            }
-//            if let location = destlocPlaceMarker.location {
-//                self.destinationAnnotation.coordinate = location.coordinate
-//                self.destinationAnnotation.title = "Destination"
-//                print("des \(location.coordinate.latitude) \(self.destinationAnnotation.coordinate.latitude)")
-//
-//            }
             let tempAnnotaion = sourceAnnotation
             sourceAnnotation = destinationAnnotation
             destinationAnnotation = tempAnnotaion
@@ -476,10 +462,31 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
     }
     
     @IBAction func onPassCloseClicked(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.4, delay: 0.0, options: .allowAnimatedContent, animations: {
-            self.passlugView.bounds.origin.y -= self.view.bounds.height
-            self.passlugView.alpha = 0
-        }, completion: nil)
+        performSegue(withIdentifier: "quoteVC", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if self.date == nil || self.time == nil {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd-MM-yyyy"
+            self.date = dateFormatter.string(from: self.datepicker.date)
+            dateFormatter.dateFormat = "HH:mm"
+            self.time = dateFormatter.string(from: self.datepicker.date)
+        }
+        if passengers == nil {
+            self.passengers = 1
+        }
+        if self.luggage == nil {
+            self.luggage = 0
+        }
+        if let destination = segue.destination as? QuoteVC {
+            destination.from = self.fromTV.text
+            destination.to = self.toTV.text
+            destination.date = "\(self.date!), \(self.time!)"
+            destination.passLug = "\(self.passengers!)/\(self.luggage!)"
+            destination.amt = "\(self.amount!)£"
+        }
+        
     }
     
     @IBAction func datepickerClicked(_ sender: UIDatePicker) {
@@ -488,7 +495,6 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
         self.date = dateFormatter.string(from: sender.date)
         dateFormatter.dateFormat = "HH:mm"
         self.time = dateFormatter.string(from: sender.date)
-        print("date \(self.date) time \(self.time) ")
     }
     
     @IBAction func passengerSlider(_ sender: UISlider) {

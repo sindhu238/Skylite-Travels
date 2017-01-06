@@ -519,10 +519,10 @@
             </objects>
             <point key="canvasLocation" x="1696" y="662"/>
         </scene>
-        <!--View Controller-->
+        <!--QuoteVC-->
         <scene sceneID="RWC-W2-YRB">
             <objects>
-                <viewController id="l8c-1I-rYB" sceneMemberID="viewController">
+                <viewController id="l8c-1I-rYB" customClass="QuoteVC" customModule="Skylite_Travels" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nQ8-SL-GyI"/>
                         <viewControllerLayoutGuide type="bottom" id="oCV-xb-NaO"/>
@@ -541,6 +541,9 @@
                                     <constraint firstAttribute="height" constant="25" id="ukJ-53-GAe"/>
                                 </constraints>
                                 <state key="normal" image="black back"/>
+                                <connections>
+                                    <action selector="onBackPressed:" destination="l8c-1I-rYB" eventType="touchUpInside" id="0Kp-cv-sEq"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quote" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wBC-ST-A6K">
                                 <rect key="frame" x="150.5" y="25" width="74" height="34.5"/>
@@ -602,7 +605,7 @@
                                         </subviews>
                                     </stackView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vertical line" translatesAutoresizingMaskIntoConstraints="NO" id="udO-4x-7q9">
-                                        <rect key="frame" x="217.5" y="0.0" width="1" height="27"/>
+                                        <rect key="frame" x="218" y="0.0" width="1" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="1" id="9pD-K1-Z6C"/>
                                         </constraints>
@@ -719,6 +722,14 @@
                             <constraint firstItem="P3n-Fl-voH" firstAttribute="centerY" secondItem="wBC-ST-A6K" secondAttribute="centerY" id="xYC-Oy-2ct"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="amount" destination="cOT-fE-O9p" id="Dlc-lt-oRY"/>
+                        <outlet property="dateTV" destination="48f-tt-B1f" id="XR9-SU-pKB"/>
+                        <outlet property="fromTV" destination="9Ku-0K-NMM" id="RDC-Ud-X8H"/>
+                        <outlet property="onBookNowClicked" destination="pBE-OO-eB6" id="sgh-Xd-8RM"/>
+                        <outlet property="passLugTV" destination="bol-1S-eDy" id="Nfc-qA-v0x"/>
+                        <outlet property="toTV" destination="mK2-Be-guX" id="LWV-Jz-89d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nUC-yy-mHX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1082,7 +1093,7 @@
                         <outlet property="toTV" destination="G6e-rW-L96" id="Vyi-ps-Y4h"/>
                         <outlet property="viewToAnimate" destination="u1P-uy-qCQ" id="mFP-J3-jdO"/>
                         <segue destination="OFf-sN-Hr3" kind="presentation" identifier="menu" id="eia-L9-Yp5"/>
-                        <segue destination="l8c-1I-rYB" kind="showDetail" id="Z7k-X3-Ded"/>
+                        <segue destination="l8c-1I-rYB" kind="showDetail" identifier="quoteVC" id="Z7k-X3-Ded"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Av-vn-PZp" userLabel="First Responder" sceneMemberID="firstResponder"/>
