@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "nav menu bottom@2x.png",
+      "filename" : "darkTransparentBG.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "nav menu bottom.png",
+      "filename" : "darkTransparentBG@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "nav menu bottom@3x.png",
+      "filename" : "darkTransparentBG@3x.png",
       "scale" : "3x"
     }
   ],

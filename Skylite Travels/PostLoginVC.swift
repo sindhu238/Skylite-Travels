@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 import Firebase
 import SideMenu
-
+import Alamofire
 
 class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
@@ -23,6 +23,8 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
     @IBOutlet weak var segControl: UISegmentedControl!
     @IBOutlet weak var downArrow: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var passengerValue: UILabel!
+    @IBOutlet weak var luggageValue: UILabel!
     
     //View behind viewToAnimate
     var view1 : UIView!
@@ -47,7 +49,18 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
     var route: MKRoute!
     var changedSourceLoc = false
     var swapClicked = false
+    var amount: Int!
+    var price: Double!
+    var vat: Double!
+    var passengers: Int!
+    var luggage: Int!
+    var date: String!
+    var time: String!
     
+    @IBOutlet weak var luggageSlider: UISlider!
+    @IBOutlet weak var passengerSlider: UISlider!
+    @IBOutlet weak var datepicker: UIDatePicker!
+    @IBOutlet weak var passlugView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.downloadDataFromFirebase()
@@ -161,22 +174,80 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
         super.viewWillAppear(animated)
         self.view.addSubview(view1)
         self.view1.isUserInteractionEnabled = false
-        view1.alpha = 1
         view1.addSubview(viewToAnimate)
         self.viewToAnimate.bounds.origin.y -= self.view.bounds.height
         self.view.layoutIfNeeded()
+        self.getQuoteBtn.alpha = 0
+        self.passlugView.bounds.origin.y -= self.view.bounds.height
+        self.passlugView.alpha = 0
     }
     
     
     @IBAction func onGetQuotePressed(_ sender: UIButton) {
         if fromTV.text != "" && toTV.text != "" {
-            let distance = sourceLocation.distance(from: destinationLocation)
-            print("Distance \(distance*0.000621371)")
+            self.downloadPrice {
+                self.downloadVat {
+                    self.calculateDistance {
+                        UIView.animate(withDuration: 0.4, delay: 0.0, options: .beginFromCurrentState, animations: {
+                           self.passlugView.alpha = 1
+                            self.passlugView.bounds.origin.y += self.view.bounds.height
+
+                        }, completion: nil)
+                    }
+                }
+            }
         }
     }
     
+    func downloadPrice(completed: @escaping DownloadComplete) {
+        let dbReference = FIRDatabase.database().reference()
+        dbReference.child("Price").observeSingleEvent(of: .value, with: { (snapshot) in
+            self.price = snapshot.value! as! Double
+            print("price \(self.price)")
+            completed()
+        })
+        { (error) in
+            print("Error in getting price details from Firebase \(error.localizedDescription)")
+        }
+    }
     
+    func downloadVat(completed: @escaping DownloadComplete) {
+        let dbReference = FIRDatabase.database().reference()
+        dbReference.child("VAT").observeSingleEvent(of: .value, with: { (snapshot) in
+            let temp = snapshot.value! as! String
+            self.vat = Double(temp)
+            print("vat \(self.vat)")
+            completed()
+        })
+        { (error) in
+            print("Error in getting vat details from Firebase \(error.localizedDescription)")
+        }
+    }
     
+    func calculateDistance(completed: @escaping DownloadComplete) {
+        let url = "\(base_url)units=imperial&origins=\(sourceLocation.coordinate.latitude),\(sourceLocation.coordinate.longitude)&destinations=\(destinationLocation.coordinate.latitude),\(destinationLocation.coordinate.longitude)&key=\(API_KEY)"
+        
+        Alamofire.request(url).responseJSON { (response) in
+            switch response.result {
+            case .success(let json):
+                let dict = json as! Dictionary<String, AnyObject>
+                let rows = dict["rows"] as! [Dictionary<String, AnyObject>]
+                let elements = rows[0]["elements"] as! [Dictionary<String, AnyObject>]
+                let distance = elements[0]["distance"] as! Dictionary<String, AnyObject>
+                let text = distance["text"] as! String
+                let lastindex = text.index(text.endIndex, offsetBy: -3)
+                let dist: String = text.substring(to: lastindex)
+                self.amount = Int(round((round(Double(dist)!) * self.price) + (round(Double(dist)!) * self.price * self.vat/100)))
+                print("amout \(self.amount)")
+                
+            case .failure(let error):
+                print("Error in getting distance from google maps \(error.localizedDescription)")
+            }
+            completed()
+        }
+    }
+
+
     @IBAction func onDownArrowClicked(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
             self.viewToAnimate.bounds.origin.y -= self.view.bounds.height
@@ -244,6 +315,9 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
                         self.routeMap(place: self.places[indexPath.row], text: "to")
                     }
                 }
+            }
+            if self.fromTV.text != "" && self.toTV.text != "" {
+                self.getQuoteBtn.alpha = 1
             }
         })
     }
@@ -399,5 +473,31 @@ class PostLoginVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegat
 
             }
         })
+    }
+    
+    @IBAction func onPassCloseClicked(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.4, delay: 0.0, options: .allowAnimatedContent, animations: {
+            self.passlugView.bounds.origin.y -= self.view.bounds.height
+            self.passlugView.alpha = 0
+        }, completion: nil)
+    }
+    
+    @IBAction func datepickerClicked(_ sender: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        self.date = dateFormatter.string(from: sender.date)
+        dateFormatter.dateFormat = "HH:mm"
+        self.time = dateFormatter.string(from: sender.date)
+        print("date \(self.date) time \(self.time) ")
+    }
+    
+    @IBAction func passengerSlider(_ sender: UISlider) {
+        self.passengers = Int(sender.value)
+        passengerValue.text = "\(self.passengers!)"
+    }
+    
+    @IBAction func luggageSlider(_ sender: UISlider) {
+        self.luggage = Int(sender.value)
+        luggageValue.text = "\(self.luggage!)"
     }
 }

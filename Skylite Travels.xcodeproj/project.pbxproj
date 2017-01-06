@@ -14,6 +14,7 @@
 		4109BAC91E02E9B0001AE89F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4109BAC81E02E9B0001AE89F /* GoogleService-Info.plist */; };
 		4109BACB1E03001A001AE89F /* PostLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4109BACA1E03001A001AE89F /* PostLoginVC.swift */; };
 		4109BACD1E03F86E001AE89F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4109BACC1E03F86E001AE89F /* MapKit.framework */; };
+		419C6B191E1E3B0E005DD6E7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419C6B181E1E3B0E005DD6E7 /* Constants.swift */; };
 		41A383301E07EC92005C7A5F /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3832F1E07EC92005C7A5F /* SignupVC.swift */; };
 		41A383321E093DDD005C7A5F /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A383311E093DDD005C7A5F /* Users.swift */; };
 		41A383341E09B862005C7A5F /* NavMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A383331E09B862005C7A5F /* NavMenu.swift */; };
@@ -34,6 +35,7 @@
 		4109BACA1E03001A001AE89F /* PostLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostLoginVC.swift; sourceTree = "<group>"; };
 		4109BACC1E03F86E001AE89F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		4109BACE1E04665D001AE89F /* Skylite Travels.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Skylite Travels.entitlements"; sourceTree = "<group>"; };
+		419C6B181E1E3B0E005DD6E7 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		41A3832F1E07EC92005C7A5F /* SignupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		41A383311E093DDD005C7A5F /* Users.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		41A383331E09B862005C7A5F /* NavMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavMenu.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 		4109BAC31E02DB8B001AE89F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				419C6B181E1E3B0E005DD6E7 /* Constants.swift */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4109BACB1E03001A001AE89F /* PostLoginVC.swift in Sources */,
+				419C6B191E1E3B0E005DD6E7 /* Constants.swift in Sources */,
 				41A383301E07EC92005C7A5F /* SignupVC.swift in Sources */,
 				41F71C381E018DD9001892A7 /* AppDelegate.swift in Sources */,
 				4109BAC51E02DBB9001AE89F /* MainVC.swift in Sources */,
