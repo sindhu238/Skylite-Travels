@@ -9,7 +9,7 @@
 import Foundation
 
 
-let API_KEY = "AIzaSyD_4z6Uh6wBh0iVOVC9vSLpW9hYhf4VsuY"
+let API_KEY = <api-key>
 let base_url = "https://maps.googleapis.com/maps/api/distancematrix/json?"
 
 typealias DownloadComplete = () -> ()
